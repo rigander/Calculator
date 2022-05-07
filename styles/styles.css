@@ -1,0 +1,148 @@
+@font-face {
+    src: url("/fonts/Bahnschrift.ttf");
+}
+body{
+    background-color: dimgrey;
+}
+.wrapper{
+    position: absolute;
+    background-color: black;
+    width: 300px;
+    height: 550px;
+    border: solid black;
+    border-radius: 15px;
+}
+#input{
+    margin: 20px 28px 0;
+    padding: 10px;
+    outline: none;
+    border: solid #686a68;
+    border-radius: 15px 15px 0 0;
+    height: 50px;
+    width: 220px;
+    background-color: #686a68;
+    resize: none;
+    font-family: "Bahnschrift", Times, serif ;
+    font-size: 25px;
+    color: white;
+    text-align: right;
+    overflow:hidden;
+    word-break:break-all;
+    white-space:normal;
+    cursor: default ;
+}
+#result{
+    margin: -5px 28px;
+    padding: 10px;
+    outline: none;
+    background-color: #686a68;
+    border: solid #686a68;
+    border-radius: 0 0 15px 15px;
+    width: 220px;
+    height: 65px;
+    resize: none;
+    font-family: "Bahnschrift", Times, serif;
+    font-size: 34px;
+    color: white;
+    text-align: right;
+    overflow:hidden;
+    word-break:break-all;
+    white-space:normal;
+    cursor: default ;
+}
+
+.number{
+    background-color: #2c2e2c;
+    border: solid #2c2e2c;
+    border-radius: 20px;
+    height: 50px;
+    width: 50px;
+    color: white;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-user-select: none;
+    outline: none;
+    font-family: "Bahnschrift", Times, serif;
+    font-size: 28px;
+    padding-top: 5px;
+}
+.number:active{
+    background-color: #686a68;
+    outline: none;
+}
+
+.empty{
+    border: black;
+    background-color: black;
+    height: 50px;
+    width: 50px;
+}
+.empty:active{
+    outline: none;
+}
+#c{
+    color: white;
+    background-color: #443030;
+    font-weight: bold;
+}
+#c:active{
+    background-color:#686a68;
+    outline: none;
+}
+.action{
+    background-color: #443030;
+    border-radius: 20px;
+    height: 50px;
+    width: 50px;
+    color: white;
+    font-size: 30px;
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+}
+.action:active{
+    background-color: #686a68;
+    outline: none;
+}
+#enter{
+    background-image: url("../image/equal-sign-2-icon-18-ffffff-79.png");
+    background-repeat: no-repeat, repeat-x;
+    background-position: center;
+    background-size: contain;
+    background-color: #443030;
+    border: solid #443030;
+    border-radius: 20px;
+    height: 50px;
+    width: 120px;
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+#enter:active{
+    background-color: #686a68;
+    -webkit-tap-highlight-color: transparent;
+}
+#multiply{
+    padding-bottom: 5px;
+}
+.container1{
+    margin-bottom: 30px;
+}
+.container2{
+    margin: 0 20px;
+    width: 280px;
+    height: 260px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr ;
+}
+.container3{
+    margin: 0 20px;
+    width: 280px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr;
+}
+
+
+
+
+
+
+
