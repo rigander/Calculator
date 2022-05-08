@@ -21,28 +21,48 @@ const enter = document.getElementById('enter');
 
 const gInput = document.querySelector('#input');
 const Result = document.getElementById('result');
+const inputField = ()=> gInput.innerHTML;
+function clearInOut() {
+    Result.innerHTML = '';
+    gInput.innerHTML = '';
+}
+
 
 //Mouse events
-//Actions
+
+//Option with switch/case.
 
 enter.addEventListener('click', ()=> {
-    if (gInput.innerHTML.match(/[^\d.+\-*\/]/)) {
-        Result.innerHTML = '';
-        gInput.innerHTML = '';
+    switch (gInput.innerHTML) {
+        case '':
+        case inputField().match(/[^\d.+\-*\/]|\D\D/) ? inputField() : true:
+            clearInOut();
+            break;
+
+        case inputField().match(/\d\/0/) ? inputField() : true:
+            gInput.innerHTML = '';
+            Result.innerHTML = 'Error';
+            break;
+
+        default:
+            Result.innerHTML = eval(gInput.innerHTML);
     }
-    if (gInput.innerHTML === '') {
-        Result.innerHTML = '';
-    }
-    if (gInput.innerHTML.match(/\+{2}|\/{2}|\.\.|-{2}|\*{2}/)){
-        Result.innerHTML = '';
-        gInput.innerHTML = '';
-    }
-    if (gInput.innerHTML.match(/\d\/0/)) {
-        gInput.innerHTML = '';
-        Result.innerHTML = 'Error';
-    }
-    else {Result.innerHTML = eval(gInput.innerHTML); }
-});
+})
+
+
+// Option with if,if,else.
+
+// enter.addEventListener('click', ()=> {
+//     if (gInput.innerHTML.match(/[^\d.+\-*\/]|\D\D/)||
+//         inputField() === '') {
+//         return clearInOut();
+//     }
+//     if (inputField().match(/\d\/0/)) {
+//         gInput.innerHTML = '';
+//         Result.innerHTML = 'Error';
+//     }
+//     else {Result.innerHTML = eval(inputField()); }
+// });
 
 Cancel.addEventListener('click', ()=> {
     gInput.innerHTML = '';
@@ -103,7 +123,7 @@ document.addEventListener('keydown', Event => {
         enter.click();
     }
 });
-document.addEventListener('keydown', event => {
+document.addEventListener('keypress', event => {
     if (event.code === 'Backspace') {
         event.preventDefault();
         Cancel.click();
