@@ -53,18 +53,29 @@ let keyboardCodes = {
 
 const enterKey = 'Enter';
 const delKey = 'Delete';
+const backspaceKey = 'Backspace';
 function addSymbolToInput(num) {
     input.innerHTML = `${input.innerHTML}${num}`;
     }
+function backspace() {
+    const subStr = input.innerHTML.slice(0, -1)
+    input.innerHTML = subStr === '' ? '' : subStr;
+}
 
 document.addEventListener('keydown', function (evt){
-    if (evt.key in keyboardCodes) {
+      if (evt.key in keyboardCodes) {
         evt.preventDefault();
         addSymbolToInput(keyboardCodes[evt.key])
     } else if (evt.key === enterKey) {
-        result.innerHTML = eval(inputField());
+            if (inputField().match(/\d\/0/)) {
+                input.innerHTML = '';
+                result.innerHTML = 'Error';}
+            else
+            result.innerHTML = eval(inputField());
     } else if (evt.key === delKey) {
         clearInOut();
+    } else if (evt.key === backspaceKey) {
+        backspace();
     }
 });
 
