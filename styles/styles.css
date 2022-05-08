@@ -79,15 +79,6 @@ body{
 .empty:active{
     outline: none;
 }
-#c{
-    color: white;
-    background-color: #443030;
-    font-weight: bold;
-}
-#c:active{
-    background-color:#686a68;
-    outline: none;
-}
 .action{
     background-color: #443030;
     border-radius: 20px;
@@ -100,6 +91,21 @@ body{
     outline: none;
 }
 .action:active{
+    background-color: #686a68;
+    outline: none;
+}
+#\*, #\-, #\/, #\+{
+    background-color: #443030;
+    border-radius: 20px;
+    height: 50px;
+    width: 50px;
+    color: white;
+    font-size: 30px;
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+}
+#\*:active, #\-:active, #\/:active, #\+:active{
     background-color: #686a68;
     outline: none;
 }

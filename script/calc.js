@@ -1,212 +1,113 @@
-// Numbers
-const One = document.getElementById('one');
-const Two = document.getElementById('two');
-const Three = document.getElementById('three');
-const Four = document.getElementById('four');
-const Five = document.getElementById('five');
-const Six = document.getElementById('six');
-const Seven = document.getElementById('seven');
-const Eight = document.getElementById('eight');
-const Nine = document.getElementById('nine');
-const Zero = document.getElementById('zero');
-const Dot = document.getElementById('dot');
-
-// Actions
-const Cancel = document.getElementById('c');
-const Plus = document.getElementById('plus');
-const Minus = document.getElementById('minus');
-const Multiply = document.getElementById('multiply');
-const Divide = document.getElementById('divide');
+const numbers = document.querySelectorAll('.number')
+const cancel = document.getElementById('c');
 const enter = document.getElementById('enter');
-
-const gInput = document.querySelector('#input');
-const Result = document.getElementById('result');
-const inputField = ()=> gInput.innerHTML;
+const input = document.querySelector('#input');
+const result = document.getElementById('result');
+const inputField = ()=> input.innerHTML;
 function clearInOut() {
-    Result.innerHTML = '';
-    gInput.innerHTML = '';
+    result.innerHTML = '';
+    input.innerHTML = '';
 }
-
-
 //Mouse events
+enter.addEventListener('click', ()=> {
+    if (input.innerHTML.match(/[^\d.+\-*\/]|\D\D/)||
+        inputField() === '') {
+        return clearInOut();
+    }
+    if (inputField().match(/\d\/0/)) {
+        input.innerHTML = '';
+        result.innerHTML = 'Error';
+    }
+    else {result.innerHTML = eval(inputField()); }
+});
+cancel.addEventListener('click', ()=> {
+    clearInOut();
+});
+numbers.forEach(function (number) {
+    number.addEventListener('click', function (e){
+        input.innerHTML = `${input.innerHTML}${e.target.id}`;
+    })
+})
+//Keyboard events
+ document.addEventListener('keydown', Event => {
+       if (Event.key === 'Enter') {
+           Event.preventDefault();
+         enter.click();
+     } if (Event.key === 'Backspace') {
+           Event.preventDefault();
+         cancel.click();
+     } if (Event.key === '+') {
+         document.getElementById('+').click();
+     } if (Event.key === '-') {
+         document.getElementById('-').click();
+     } if (Event.key === '*') {
+         document.getElementById('*').click();
+     } if (Event.key === '.') {
+         document.getElementById('.').click();
+     } if (Event.key === '/') {
+         document.getElementById('/').click();
+     } if (Event.key === '1') {
+         document.getElementById('1').click();
+     } if (Event.key === '2') {
+         document.getElementById('2').click();
+     } if (Event.key === '3') {
+         document.getElementById('3').click();
+     } if (Event.key === '4') {
+         document.getElementById('4').click();
+     } if (Event.key === '5') {
+         document.getElementById('5').click();
+     } if (Event.key === '6') {
+         document.getElementById('6').click();
+     } if (Event.key === '7') {
+         document.getElementById('7').click();
+     } if (Event.key === '8') {
+         document.getElementById('8').click();
+     } if (Event.key === '9') {
+         document.getElementById('9').click();
+     } if (Event.key === '0') {
+         document.getElementById('0').click();
+     }
+ });
+
+
+
+// let keyboardCodes = {
+//     '0': '0',
+//     '1': '1',
+//     '2': '2',
+//     '3': '3',
+//     '4': '4',
+//     '5': '5',
+//     '6': '6',
+//     '7': '7',
+//     '8': '8',
+//     '9': '9',
+//     '-': '-',
+//     '+': '+',
+//     '*': '*',
+//     '/': '/',
+//     '.': '.'
+// };
+
 
 //Option with switch/case.
 
-enter.addEventListener('click', ()=> {
-    switch (gInput.innerHTML) {
-        case '':
-        case inputField().match(/[^\d.+\-*\/]|\D\D/) ? inputField() : true:
-            clearInOut();
-            break;
-
-        case inputField().match(/\d\/0/) ? inputField() : true:
-            gInput.innerHTML = '';
-            Result.innerHTML = 'Error';
-            break;
-
-        default:
-            Result.innerHTML = eval(gInput.innerHTML);
-    }
-})
-
-
-// Option with if,if,else.
-
 // enter.addEventListener('click', ()=> {
-//     if (gInput.innerHTML.match(/[^\d.+\-*\/]|\D\D/)||
-//         inputField() === '') {
-//         return clearInOut();
+//     switch (gInput.innerHTML) {
+//         case '':
+//         case inputField().match(/[^\d.+\-*\/]|\D\D/) ? inputField() : true:
+//             clearInOut();
+//             break;
+//
+//         case inputField().match(/\d\/0/) ? inputField() : true:
+//             gInput.innerHTML = '';
+//             Result.innerHTML = 'Error';
+//             break;
+//         default:
+//             Result.innerHTML = eval(gInput.innerHTML);
 //     }
-//     if (inputField().match(/\d\/0/)) {
-//         gInput.innerHTML = '';
-//         Result.innerHTML = 'Error';
-//     }
-//     else {Result.innerHTML = eval(inputField()); }
-// });
+// })
 
-Cancel.addEventListener('click', ()=> {
-    gInput.innerHTML = '';
-    Result.innerHTML = '';
-});
-Plus.addEventListener('click', ()=> {
-    gInput.innerHTML = `${gInput.innerHTML}+`
-});
-Minus.addEventListener('click', ()=> {
-    gInput.innerHTML = `${gInput.innerHTML}-`
-});
-Multiply.addEventListener('click', ()=> {
-    gInput.innerHTML = `${gInput.innerHTML}*`
-});
-Divide.addEventListener('click', ()=> {
-    gInput.innerHTML = `${gInput.innerHTML}/`
-});
-//Numbers
-One.addEventListener('click', ()=> {
-    gInput.innerHTML = `${gInput.innerHTML}1`;
-});
-Two.addEventListener('click', ()=> {
-    gInput.innerHTML = `${gInput.innerHTML}2`;
-});
-Three.addEventListener('click', ()=> {
-    gInput.innerHTML = `${gInput.innerHTML}3`;
-});
-Four.addEventListener('click', ()=> {
-    gInput.innerHTML = `${gInput.innerHTML}4`;
-});
-Five.addEventListener('click', ()=> {
-    gInput.innerHTML = `${gInput.innerHTML}5`;
-});
-Six.addEventListener('click', ()=> {
-    gInput.innerHTML = `${gInput.innerHTML}6`;
-});
-Seven.addEventListener('click', ()=> {
-    gInput.innerHTML = `${gInput.innerHTML}7`;
-});
-Eight.addEventListener('click', ()=> {
-    gInput.innerHTML = `${gInput.innerHTML}8`;
-});
-Nine.addEventListener('click', ()=> {
-    gInput.innerHTML = `${gInput.innerHTML}9`;
-});
-Zero.addEventListener('click', ()=> {
-    gInput.innerHTML = `${gInput.innerHTML}0`;
-});
-Dot.addEventListener('click', ()=> {
-    gInput.innerHTML = `${gInput.innerHTML}.`;
-});
-
-
-//Keyboard events
-document.addEventListener('keydown', Event => {
-    if (Event.key === 'Enter') {
-        Event.preventDefault();
-        enter.click();
-    }
-});
-document.addEventListener('keypress', event => {
-    if (event.code === 'Backspace') {
-        event.preventDefault();
-        Cancel.click();
-    }
-});
-document.addEventListener('keypress', Event => {
-    if (Event.key === '=') {
-        enter.click();
-    }
-});
-document.addEventListener('keypress', Event => {
-    if (Event.key === '+') {
-        Plus.click();
-    }
-});
-document.addEventListener('keypress', Event => {
-    if (Event.key === '-') {
-        Minus.click();
-    }
-});
-document.addEventListener('keypress', Event => {
-    if (Event.key === '*') {
-        Multiply.click();
-    }
-});
-document.addEventListener('keypress', Event => {
-    if (Event.key === '.') {
-        Dot.click();
-    }
-});
-document.addEventListener('keypress', Event => {
-    if (Event.key === '/') {
-        Divide.click();
-    }
-});
-document.addEventListener('keypress', Event => {
-    if (Event.key === '1') {
-        One.click();
-    }
-});
-document.addEventListener('keypress', Event => {
-    if (Event.key === '2') {
-        Two.click();
-    }
-});
-document.addEventListener('keypress', Event => {
-    if (Event.key === '3') {
-        Three.click();
-    }
-});
-document.addEventListener('keypress', Event => {
-    if (Event.key === '4') {
-        Four.click();
-    }
-});
-document.addEventListener('keypress', Event => {
-    if (Event.key === '5') {
-        Five.click();
-    }
-});
-document.addEventListener('keypress', Event => {
-    if (Event.key === '6') {
-        Six.click();
-    }
-});
-document.addEventListener('keypress', Event => {
-    if (Event.key === '7') {
-        Seven.click();
-    }
-});
-document.addEventListener('keypress', Event => {
-    if (Event.key === '8') {
-        Eight.click();
-    }
-});document.addEventListener('keypress', Event => {
-    if (Event.key === '9') {
-        Nine.click();
-    }
-});document.addEventListener('keypress', Event => {
-    if (Event.key === '0') {
-        Zero.click();
-    }
-});
 
 
 
