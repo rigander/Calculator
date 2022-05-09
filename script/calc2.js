@@ -32,7 +32,34 @@ numbers.forEach(function (number) {
         input.innerHTML = `${input.innerHTML}${e.target.id}`;
     })
 })
+
 //Keyboard events
+const enterKey = 'Enter';
+const delKey = 'Delete';
+const backspaceKey = 'Backspace';
+function addSymbolToInput(num) {
+    input.innerHTML = `${input.innerHTML}${num}`;
+    }
+function backspace() {
+    const subStr = input.innerHTML.slice(0, -1)
+    input.innerHTML = subStr === '' ? '' : subStr;
+}
+document.addEventListener('keydown', function (evt){
+      if (evt.key in keyboardCodes) {
+        evt.preventDefault();
+        addSymbolToInput(keyboardCodes[evt.key])
+    } else if (evt.key === enterKey) {
+            if (inputField().match(/\d\/0/)) {
+                input.innerHTML = '';
+                result.innerHTML = 'Error';}
+            else
+            result.innerHTML = eval(inputField());
+    } else if (evt.key === delKey) {
+        clearInOut();
+    } else if (evt.key === backspaceKey) {
+        backspace();
+    }
+});
 let keyboardCodes = {
     '0': '0',
     '1': '1',
@@ -50,34 +77,6 @@ let keyboardCodes = {
     '/': '/',
     '.': '.'
 };
-
-const enterKey = 'Enter';
-const delKey = 'Delete';
-const backspaceKey = 'Backspace';
-function addSymbolToInput(num) {
-    input.innerHTML = `${input.innerHTML}${num}`;
-    }
-function backspace() {
-    const subStr = input.innerHTML.slice(0, -1)
-    input.innerHTML = subStr === '' ? '' : subStr;
-}
-
-document.addEventListener('keydown', function (evt){
-      if (evt.key in keyboardCodes) {
-        evt.preventDefault();
-        addSymbolToInput(keyboardCodes[evt.key])
-    } else if (evt.key === enterKey) {
-            if (inputField().match(/\d\/0/)) {
-                input.innerHTML = '';
-                result.innerHTML = 'Error';}
-            else
-            result.innerHTML = eval(inputField());
-    } else if (evt.key === delKey) {
-        clearInOut();
-    } else if (evt.key === backspaceKey) {
-        backspace();
-    }
-});
 
 
 
