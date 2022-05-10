@@ -17,8 +17,7 @@ function clearInOut() {
 
 function getResult(){
     if (inputField().match(/[^\d.+\-*\/]|\D\D/) || inputField() === '') {
-        clearInOut();
-        return;
+        return clearInOut();
     }
     if (inputField().match(/\d\/0/)) {
         input.innerHTML = '';
