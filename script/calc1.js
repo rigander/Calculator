@@ -1,64 +1,88 @@
 
-function Methods () {
+//Constructor
+function Calculator () {
     this.input = document.querySelector('#input');
     this.result = document.querySelector('#result');
     this.calcButtons = document.querySelectorAll(".number");
     this.keyCodes = ['+', '-', '*', '.', '/', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
     this.enter = document.querySelector('#enter');
     this.cancel = document.querySelector('#c');
-    this.inputField = () => {
-        return document.querySelector('#input').innerHTML;
-    }
-    this.clearFields = ()=> {
-        document.querySelector('#result').innerHTML = '';
-        document.querySelector('#input').innerHTML = '';
-    }
-    this.getResult = ()=> {
-         if (document.querySelector('#input').innerHTML.match(/[^\d.+\-*\/]|\D\D/)
-             || document.querySelector('#input').innerHTML === '') {
-            document.querySelector('#result').innerHTML = '';
-         return   document.querySelector('#input').innerHTML = '';
-        }if (document.querySelector('#input').innerHTML.match(/\d\/0/)) {
-            document.querySelector('#input').innerHTML = '';
-            document.querySelector('#result').innerHTML = 'Error';
-        }else {
-            document.querySelector('#result').innerHTML =
-                eval(document.querySelector('#input').innerHTML);
-        }
-    }
 
-    this.backspace = ()=> {
-         this.subStr = document.querySelector('#input').innerHTML.slice(0, -1);
-        document.querySelector('#input').innerHTML = this.subStr === '' ? '' : this.subStr;
-        }
-}
-const methods = new Methods();
-
-methods.calcButtons.forEach(item => {
-    item.addEventListener('click', event => {
-        methods.input.innerHTML = methods.input.innerHTML + item.value;
+    this.enter.addEventListener('click', event => {
+            return this.getResult();
+        });
+    this.cancel.addEventListener('click', event => {
+            return this.clearFields();
+        });
+    this.calcButtons.forEach(item => {
+        item.addEventListener('click', event => {
+            this.input.innerHTML = this.input.innerHTML + item.value;
+        })
     })
-});
-methods.enter.addEventListener('click', methods.getResult);
-methods.cancel.addEventListener('click', methods.clearFields);
+    document.addEventListener('keydown', event => {
+        if (['Enter', '='].includes(event.key)) {
+            event.preventDefault();
+            this.getResult();
+        }
+        if (this.keyCodes.includes(event.key)) {
+            this.input.innerHTML = this.inputField() + event.key;
+        }
+        if (event.key === 'Delete') {
+            event.preventDefault();
+            this.clearFields();
+        }
+        if (event.key === 'Backspace') {
+            event.preventDefault();
+            this.backspace();
+        }
+    });
+}
 
-document.addEventListener('keydown', event => {
-    if (['Enter', '='].includes(event.key)) {
-        event.preventDefault();
-        methods.getResult();
+//Prototype level methods
+Calculator.prototype.inputField = function () {
+    return this.input.innerHTML;
+}
+Calculator.prototype.resultField = function () {
+    return this.result.innerHTML;
+}
+
+Calculator.prototype.clearFields = function () {
+    this.result.innerHTML = '';
+    return this.input.innerHTML = '';
+}
+Calculator.prototype.backspace = function () {
+    this.subStr = document.querySelector('#input').innerHTML.slice(0, -1);
+    document.querySelector('#input').innerHTML = this.subStr === '' ? '' : this.subStr;
+}
+Calculator.prototype.getResult = function () {
+    if (this.input.innerHTML.match(/[^\d.+\-*\/]|\D\D/)
+        || this.input.innerHTML === '') {
+        this.result.innerHTML = '';
+        return   this.input.innerHTML = '';
+    }if (this.input.innerHTML.match(/\d\/0/)) {
+        this.input.innerHTML = '';
+        this.result.innerHTML = 'Error';
+    }else {
+        this.result.innerHTML =
+            eval(this.input.innerHTML);
     }
-    if (methods.keyCodes.includes(event.key)) {
-        methods.input.innerHTML = methods.inputField() + event.key;
-    }
-    if (event.key === 'Delete') {
-        event.preventDefault();
-        methods.clearFields();
-    }
-    if (event.key === 'Backspace') {
-        event.preventDefault();
-        methods.backspace();
-    }
-});
+}
+
+
+
+// New object
+const elCalculator = new Calculator();
+
+
+
+
+
+
+
+
+
+
+
 
 
 

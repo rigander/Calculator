@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d4a6e0ba-5e14-4548-bd8c-9b62345b6973" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/script/calc3.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/calc3.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/calc1.js" beforeDir="false" afterPath="$PROJECT_DIR$/script/calc1.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +49,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Documents/Projects/Java_Script_Education" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -69,7 +68,8 @@
       <workItem from="1651787185615" duration="3139000" />
       <workItem from="1651829195936" duration="24375000" />
       <workItem from="1651930712767" duration="49584000" />
-      <workItem from="1652045814482" duration="25527000" />
+      <workItem from="1652045814482" duration="39436000" />
+      <workItem from="1652263635842" duration="3821000" />
     </task>
     <servers />
   </component>
